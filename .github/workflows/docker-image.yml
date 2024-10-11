@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag silver-mene:${{ github.sha }}
+      run: docker build . --file Dockerfile --tag silver-mene:latest
 
     - name: 'Build and push image'
       uses: azure/docker-login@v1
@@ -24,7 +24,5 @@ jobs:
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - run: |
-        docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/silver-mene:${{ github.sha }}
-        docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/silver-mene:${{ github.sha }}
-
-
+        docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/silver-mene:latest
+        docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/silver-mene:latest
