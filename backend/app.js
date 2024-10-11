@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, "../client/build")));
 
 app.get("/hello", (req, res) => {
-  res.send("Hello World!");
+  res.send("Moro! " + new Date().toISOString());
 });
 
 app.use("*", (req, res) => {
