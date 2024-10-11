@@ -12,6 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+    - name: hello-action
+      uses: azure/cli@v2
+      with:
+        azcliversion: latest
+        inlineScript: |
+          echo hello
+
     - uses: azure/login@v2
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
